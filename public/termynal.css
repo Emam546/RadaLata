@@ -1,0 +1,93 @@
+/**
+ * termynal.js
+ *
+ * @author Ines Montani <ines@ines.io>
+ * @version 0.0.1
+ * @license MIT
+ */
+
+:root {
+    --color-bg: #000000;
+    --color-text: rgb(9, 198, 53);
+    --color-text-subtle: --color-text;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+}
+
+[data-termynal] {
+    width: 100%;
+    height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
+    position: absolute;
+    padding: 20px 10px 0 10px;
+}
+
+
+
+
+
+[data-ty] {
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-ty]:before {
+    /* Set up defaults and ensure empty lines are displayed. */
+    content: '>';
+    margin-right: 7px;
+    font-size: 20px;
+}
+
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+    caret-color: transparent;
+}
+
+[contenteditable="true"]:after {
+    content: "<?>";
+    font-family: monospace;
+    -webkit-animation: blink 1s infinite;
+    animation: blink 1s infinite;
+}
+
+[data-ty="input"]:before,
+[data-ty-prompt]:before {
+    color: var(--color-text-subtle);
+}
+
+
+[data-ty][data-ty-prompt]:before {
+    content: attr(data-ty-prompt);
+}
+
+[data-ty-cursor]:after {
+    content: attr(data-ty-cursor);
+    font-family: monospace;
+    margin-left: 0.5em;
+    -webkit-animation: blink 1s infinite;
+    animation: blink 1s infinite;
+}
+
+
+/* Cursor animation */
+
+@-webkit-keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
