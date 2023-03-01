@@ -6,6 +6,7 @@ import { Questions } from "./Question";
 import EnvVars from "./declarations/major/EnvVars";
 import logger from "jet-logger";
 import {MESSAGE_EMIT,SEND_EMIT} from "./constants"
+import path from "path";
 const redis = require("redis");
 const app = express();
 const server = http.createServer(app);
@@ -87,7 +88,7 @@ function sendRandomQuestion(socket: Socket) {
                     break;
                 }
             } else {
-                socket.emit(MESSAGE_EMIT, "ASK A WEIRD QUESTION TO ALL PEOPLE");
+                socket.emit(MESSAGE_EMIT, "ASK A WEIRD QUESTION TO EVERYONE");
                 break;
             }
         }
@@ -111,5 +112,5 @@ app.get("/api/info/emits",(req,res)=>{
         "send_emit":SEND_EMIT
     })
 })
-app.use(express.static("./public"));
+app.use(express.static(path.join(__dirname,"./public")));
 export default server;
