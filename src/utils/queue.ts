@@ -4,14 +4,13 @@ export interface IQueue<T> {
     size(): number;
 }
 export class Queue<T> extends Array implements IQueue<T> {
-
-    constructor(protected capacity: number = Infinity) { 
+    constructor(protected capacity: number = Infinity) {
         super();
     }
 
     enqueue(item: T): void {
         if (this.size() === this.capacity) {
-            throw Error("Queue has reached max capacity, you cannot add more items");
+            this.shift();
         }
         this.push(item);
     }
