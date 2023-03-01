@@ -1,0 +1,80 @@
+@import "./function";
+
+:root {
+    --color-bg: #000000;
+    --color-text: rgb(9, 198, 53);
+    --color-text-subtle: --color-text;
+    font-size: rem(18);
+}
+body {
+    font-family: "Fira Mono", Consolas, Menlo, Monaco, "Courier New", Courier,
+        monospace;
+    background-color: var(--color-bg);
+}
+.body-container {
+    margin: rem(15) rem(5);
+    background-color: black;
+    color: var(--color-text);
+    text-transform: uppercase;
+    user-select: none;
+    line-height: 1em;
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li {
+            word-break: break-all;
+            margin-bottom: rem(10);
+            &:before {
+                content: ">";
+                font-size: rem(20);
+                margin-right: rem(7);
+                font-weight: 600;
+            }
+            &[contentEditable] {
+                background-color: transparent;
+                color: var(--color-text);
+                border: none;
+                text-transform: uppercase;
+                font-size: 1rem;
+                font-weight: normal;
+                width: fit-content;
+                min-width: 0px;
+                max-width: 100%;
+                &:focus {
+                    outline: none;
+                    caret-color: transparent;
+                }
+
+                cursor: default;
+                border: 1px solid red;
+                overflow: visible;
+            }
+        }
+    }
+}
+
+textarea#setter {
+    appearance: none;
+    position: absolute;
+    left: -1000vw;
+}
+.cursor {
+    position: relative;
+    display: inline-block;
+    &:after {
+        content: attr(cursor);
+        font-size: rem(20);
+        font-family: monospace;
+        -webkit-animation: blink 1s infinite;
+        animation: blink 1s infinite;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
