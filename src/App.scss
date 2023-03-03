@@ -10,10 +10,13 @@ body {
     font-family: "Fira Mono", Consolas, Menlo, Monaco, "Courier New", Courier,
         monospace;
     background-color: var(--color-bg);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 .body-container {
-    margin: rem(15) rem(5);
-    background-color: black;
+    padding: rem(20) rem(10);
+    background-color: transparent;
     color: var(--color-text);
     text-transform: uppercase;
     user-select: none;
@@ -30,25 +33,6 @@ body {
                 font-size: rem(20);
                 margin-right: rem(7);
                 font-weight: 600;
-            }
-            &[contentEditable] {
-                background-color: transparent;
-                color: var(--color-text);
-                border: none;
-                text-transform: uppercase;
-                font-size: 1rem;
-                font-weight: normal;
-                width: fit-content;
-                min-width: 0px;
-                max-width: 100%;
-                &:focus {
-                    outline: none;
-                    caret-color: transparent;
-                }
-
-                cursor: default;
-                border: 1px solid red;
-                overflow: visible;
             }
         }
     }
