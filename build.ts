@@ -13,10 +13,9 @@ import childProcess from "child_process";
     try {
         // Remove current build
         await remove("./dist/");
-        // Copy front-end files
-        await copy("./src/public", "./dist/public");
         // Copy back-end files
         await exec("tsc --build tsconfig.prod.json", "./");
+        logger.info("Success");
     } catch (err) {
         logger.err(err);
     }
@@ -28,17 +27,6 @@ import childProcess from "child_process";
 function remove(loc: string): Promise<void> {
     return new Promise((res, rej) => {
         return fs.remove(loc, (err) => {
-            return !!err ? rej(err) : res();
-        });
-    });
-}
-
-/**
- * Copy file.
- */
-function copy(src: string, dest: string): Promise<void> {
-    return new Promise((res, rej) => {
-        return fs.copy(src, dest, (err) => {
             return !!err ? rej(err) : res();
         });
     });

@@ -1,9 +1,12 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.server.json",
   "compilerOptions": {
     "sourceMap": false,
     "removeComments": true
   },
+  "include": [
+    "server/src"
+  ],
   "exclude": [
     "test/",
     "src/public/",

@@ -1,18 +1,19 @@
 export interface IQueue<T> {
-    enqueue(item: T): void;
-    dequeue(): T | undefined;
+    enqueue(...item: T[]): void;
+    dequeue(): ReturnType<Array<T>["shift"]>;
     size(): number;
 }
-export class Queue<T> extends Array implements IQueue<T> {
+export class Queue<T = unknown> extends Array<T> implements IQueue<T> {
     constructor(protected capacity: number = Infinity) {
         super();
     }
 
-    enqueue(item: T): void {
+    enqueue(...item: T[]): void {
         if (this.size() === this.capacity) {
-            this.shift();
+            item.forEach(() => this.shift());
         }
-        this.push(item);
+
+        this.push(...item);
     }
     dequeue(): T | undefined {
         return this.shift();
